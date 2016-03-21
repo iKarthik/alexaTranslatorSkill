@@ -1,0 +1,7 @@
+NewLanguageIntent to change language to {Language}
+TranslateIntent to translate {how are you doing|Phrase} using LITERAL
+TranslateIntent to translate {food|Phrase} using LITERAL
+TranslateIntent to translate {I think am going crazy here|Phrase} using LITERAL
+TranslateIntent to translate {Do you want me to come|Phrase} using LITERAL
+TranslateIntent to translate {I work and live in Addison|Phrase} using LITERAL
+RepeatIntent again

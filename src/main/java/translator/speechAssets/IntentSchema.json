@@ -1,0 +1,25 @@
+{
+  "intents": [
+    {
+      "intent": "NewLanguageIntent",
+      "slots": [
+        {
+          "name": "Language",
+          "type": "LIST_OF_LANGUAGES"
+        }
+      ]
+    },
+    {
+      "intent": "TranslateIntent",
+      "slots": [
+        {
+          "name": "Phrase",
+          "type": "AMAZON.LITERAL"
+        }
+      ]
+    },
+    {
+      "intent": "RepeatIntent"
+    }
+  ]
+}
