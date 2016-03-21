@@ -37,14 +37,14 @@ public class GoogleTranslater {
     private static Translate buildTranslate() throws GeneralSecurityException, IOException {
         return new Translate.Builder(GoogleNetHttpTransport.newTrustedTransport()
                 , GsonFactory.getDefaultInstance(), null)
-                .setApplicationName("Server Key 1")
+                .setApplicationName("YOUR_APP_NAME")
                 .build();
     }
 
     private static Translate.Translations.List buildTranslateList(Translate translate, String toLanguage, String phrase) throws IOException {
         Translate.Translations.List list = translate.new Translations().list(
                 Arrays.asList(phrase),toLanguage);
-        list.setKey("AIzaSyBFG_VxY35RMpwM1Jqxyuu5ai6_uT_SRaY");
+        list.setKey("YOUR_API_KEY");
         return list;
     }
 }

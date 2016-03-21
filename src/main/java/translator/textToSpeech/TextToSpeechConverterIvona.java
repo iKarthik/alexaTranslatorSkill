@@ -18,7 +18,7 @@ public class TextToSpeechConverterIvona {
 
 
     static {
-        AWSCredentials creds = new BasicAWSCredentials("GDNAILY2CRF6WUYPOF2Q", "xlafUwo7VpIKLmqBSP+QTaz8hlXZVUgG3tsnWmJc");
+        AWSCredentials creds = new BasicAWSCredentials("YOUR_ACCESS_KEY", "YOUR_SECRET_KEY");
         speechCloud = new IvonaSpeechCloudClient(creds);
         speechCloud.setEndpoint("https://tts.eu-west-1.ivonacloud.com");
 
