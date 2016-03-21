@@ -1,5 +1,7 @@
 package translator.textToSpeech;
 
+import translator.creds.CredentialsManager;
+
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -15,7 +17,7 @@ public class TextToSpeechConverterVoiceRSS {
         ByteArrayOutputStream outputStream = null;
         byte[] byteArray = null;
         try {
-            URL link = new URL("https://api.voicerss.org/?key=d87150427f7149d6a2e32f111ebe68c6&src="+
+            URL link = new URL("https://api.voicerss.org/?key="+ CredentialsManager.getVoiceRssApiKey()+"&src="+
                     accountForSpaces(phrase)+"&hl="+phraseInLanguage+"&f=32khz_16bit_stereo");
             in = new BufferedInputStream(link.openStream());
             outputStream = new ByteArrayOutputStream();

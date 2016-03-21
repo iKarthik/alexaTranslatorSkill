@@ -19,7 +19,7 @@ public class VoiceRss {
     }
 
     private static void foo() throws Exception {
-        URL link = new URL("https://api.voicerss.org/?key=YOUR_API_KEY&src=hello&hl=en-in");
+        URL link = new URL("https://api.voicerss.org/?key=d87150427f7149d6a2e32f111ebe68c6&src=hello&hl=en-in");
 
         //Code to download
         InputStream in = new BufferedInputStream(link.openStream());
@@ -34,7 +34,7 @@ public class VoiceRss {
         InputStream isFromFirstData = new ByteArrayInputStream(out.toByteArray());
 
 
-        AWSCredentials credentials = new BasicAWSCredentials("YOUR_ACCESS_KEY", "YOUR_SECRET_KEY");
+        AWSCredentials credentials = new BasicAWSCredentials("AKIAIED74ANCXMLNU4IA", "qLyhXIVxGskt0+npOfa7Fpb3nyUT3ql1vazzOYEY");
         AmazonS3 s3client = new AmazonS3Client(credentials);
         String bucketName = "samplebooblibucket1";
         s3client.createBucket(bucketName);

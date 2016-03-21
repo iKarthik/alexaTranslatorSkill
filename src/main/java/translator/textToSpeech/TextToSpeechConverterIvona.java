@@ -7,6 +7,7 @@ import com.ivona.services.tts.model.CreateSpeechRequest;
 import com.ivona.services.tts.model.CreateSpeechResult;
 import com.ivona.services.tts.model.Input;
 import com.ivona.services.tts.model.Voice;
+import translator.creds.CredentialsManager;
 
 import java.io.*;
 
@@ -18,7 +19,8 @@ public class TextToSpeechConverterIvona {
 
 
     static {
-        AWSCredentials creds = new BasicAWSCredentials("YOUR_ACCESS_KEY", "YOUR_SECRET_KEY");
+        AWSCredentials creds = new BasicAWSCredentials(CredentialsManager.getIvonaAccessKey(),
+                CredentialsManager.getIvonaSecretKey());
         speechCloud = new IvonaSpeechCloudClient(creds);
         speechCloud.setEndpoint("https://tts.eu-west-1.ivonacloud.com");
 
@@ -26,7 +28,7 @@ public class TextToSpeechConverterIvona {
 
     public static byte[] toSpeech(String phraseInLanguage, String phrase) throws Exception {
         System.out.println("Using Ivona to translate text to speech");
-        System.out.println("Ivona lang code "+phraseInLanguage);
+        System.out.println("Ivona lang code " + phraseInLanguage);
         CreateSpeechRequest createSpeechRequest = new CreateSpeechRequest();
         Input input = new Input();
         Voice voice = new Voice();
@@ -53,7 +55,7 @@ public class TextToSpeechConverterIvona {
                 outputStream.write(buffer, 0, readBytes);
             }
             byte[] outputByteArray = outputStream.toByteArray();
-            System.out.println("Translated byte array "+outputByteArray);
+            System.out.println("Translated byte array " + outputByteArray);
             return outputByteArray;
         } catch (Exception ex) {
             System.err.println("Error translating text to speech by ivona " +ex.getLocalizedMessage());

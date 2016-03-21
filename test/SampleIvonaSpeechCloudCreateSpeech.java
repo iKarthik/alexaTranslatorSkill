@@ -19,7 +19,7 @@ public class SampleIvonaSpeechCloudCreateSpeech {
     private static IvonaSpeechCloudClient speechCloud;
 
     private static void init() {
-        AWSCredentials creds = new BasicAWSCredentials("YOUR_ACCESS_KEY", "YOUR_SECRET_KEY");
+        AWSCredentials creds = new BasicAWSCredentials("GDNAILY2CRF6WUYPOF2Q", "xlafUwo7VpIKLmqBSP+QTaz8hlXZVUgG3tsnWmJc");
         speechCloud = new IvonaSpeechCloudClient(creds);
         speechCloud.setEndpoint("https://tts.eu-west-1.ivonacloud.com");
     }

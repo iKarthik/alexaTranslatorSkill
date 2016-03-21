@@ -5,6 +5,7 @@ import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.translate.Translate;
 import com.google.api.services.translate.model.TranslationsListResponse;
 import com.google.api.services.translate.model.TranslationsResource;
+import translator.creds.CredentialsManager;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -37,14 +38,14 @@ public class GoogleTranslater {
     private static Translate buildTranslate() throws GeneralSecurityException, IOException {
         return new Translate.Builder(GoogleNetHttpTransport.newTrustedTransport()
                 , GsonFactory.getDefaultInstance(), null)
-                .setApplicationName("YOUR_APP_NAME")
+                .setApplicationName("Server Key 1")
                 .build();
     }
 
     private static Translate.Translations.List buildTranslateList(Translate translate, String toLanguage, String phrase) throws IOException {
         Translate.Translations.List list = translate.new Translations().list(
                 Arrays.asList(phrase),toLanguage);
-        list.setKey("YOUR_API_KEY");
+        list.setKey(CredentialsManager.getGoogleApiKey());
         return list;
     }
 }

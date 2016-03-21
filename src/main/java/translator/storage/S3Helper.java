@@ -6,6 +6,7 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.*;
 import org.apache.commons.io.IOUtils;
+import translator.creds.CredentialsManager;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -20,7 +21,7 @@ public class S3Helper {
     public static String saveToS3(byte[] byteArray, String bucketName, String fileName) throws Exception {
         System.out.println("Saving bytearray to S3");
         InputStream isFromFirstData = new ByteArrayInputStream(byteArray);
-        AWSCredentials credentials = new BasicAWSCredentials("YOUR_ACCESS_KEY", "YOUR_SECRET_KEY");
+        AWSCredentials credentials = new BasicAWSCredentials(CredentialsManager.getAWSAccessKey(), CredentialsManager.getAWSSecretKey());
         AmazonS3 s3client = new AmazonS3Client(credentials);
         PutObjectResult result = s3client.putObject(new PutObjectRequest(bucketName, fileName, isFromFirstData, new ObjectMetadata()));
         System.out.println("Successfully saved to S3");
@@ -28,7 +29,7 @@ public class S3Helper {
     }
 
     public static String getLangFromS3() throws IOException {
-        AWSCredentials credentials = new BasicAWSCredentials("YOUR_ACCESS_KEY", "YOUR_SECRET_KEY");
+        AWSCredentials credentials = new BasicAWSCredentials(CredentialsManager.getAWSAccessKey(), CredentialsManager.getAWSSecretKey());
         AmazonS3 s3client = new AmazonS3Client(credentials);
         S3Object object = s3client.getObject(new GetObjectRequest("translatelanguage", "language.txt"));
         StringWriter writer = new StringWriter();
@@ -38,7 +39,7 @@ public class S3Helper {
 
     public static String saveLangToS3(String lang) throws Exception {
         InputStream isFromFirstData = new ByteArrayInputStream(lang.getBytes());
-        AWSCredentials credentials = new BasicAWSCredentials("YOUR_ACCESS_KEY", "YOUR_SECRET_KEY");
+        AWSCredentials credentials = new BasicAWSCredentials(CredentialsManager.getAWSAccessKey(), CredentialsManager.getAWSSecretKey());
         AmazonS3 s3client = new AmazonS3Client(credentials);
         PutObjectResult result = s3client.putObject(new PutObjectRequest("translatelanguage", "language.txt", isFromFirstData, new ObjectMetadata()));
         System.out.println("Successfully saved to S3");
